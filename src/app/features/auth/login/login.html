@@ -1,0 +1,30 @@
+<form class="login-form" [formGroup]="loginForm" (submit)="onLogin()">
+      <div class="form-header">
+        <div>
+          <h2>Login</h2>
+          <p>Enter the valid Login details</p>
+        </div>
+        <span class="form-badge">LOGIN FORM</span>
+      </div>
+    <!-- UserId -->
+    <mat-form-field class="example-full-width">
+      <mat-label>UserID</mat-label>
+      <input type="text" matInput formControlName="userID">
+      <mat-error *ngIf="loginForm.get('userID')?.touched && loginForm.get('userID')?.hasError('required')">This is a Required Field</mat-error>
+      <mat-error *ngIf="loginForm.get('userID')?.dirty && loginForm.get('userID')?.hasError('email')">Enter Valid User ID</mat-error>
+    </mat-form-field>
+
+    <!-- Password -->
+    <mat-form-field class="example-full-width">
+      <mat-label>Password</mat-label>
+      <input type="password" matInput formControlName="password">
+      <mat-error *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.hasError('required')">This is a Required Field</mat-error>
+      <mat-error *ngIf="loginForm.get('password')?.dirty && (loginForm.get('password')?.hasError('minlength') || loginForm.get('password')?.hasError('maxlength'))">Password should be 8-10 characters</mat-error>
+    </mat-form-field>
+
+    <div class="form-actions full-row">
+    <button type="submit" class="submit-btn">
+      Login
+    </button>
+    </div>
+</form>

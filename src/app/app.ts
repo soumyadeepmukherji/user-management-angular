@@ -1,4 +1,5 @@
 import { Component, signal } from '@angular/core';
+import { NgxMatToastService } from 'ngx-mat-toast';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +8,5 @@ import { Component, signal } from '@angular/core';
   templateUrl: './app.html',
 })
 export class App {
-  protected readonly title = signal('user-management');
+
 }

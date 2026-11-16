@@ -1,0 +1,89 @@
+
+
+<div class="user-list-container" *ngIf="!errorMessage">
+
+  <div class="list-header">
+    <div class="header-content">
+      <h2>User Directory</h2>
+      <p>Manage and view all registered users.</p>
+    </div>
+
+    <span class="total-badge">
+      User Records
+    </span>
+  </div>
+
+  <table mat-table [dataSource]="dataSource" class="user-table">
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element"> <span class="id-badge">{{element.id}}</span> </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> <span class="user-name">{{element.name}}</span> </td>
+    </ng-container>
+
+    <!-- Username Column -->
+    <ng-container matColumnDef="username">
+      <th mat-header-cell *matHeaderCellDef> Username </th>
+      <td mat-cell *matCellDef="let element"> <span class="username-text">{{element.username}}</span> </td>
+    </ng-container>
+
+    <!-- Email Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+
+    <!-- Address Column -->
+    <ng-container matColumnDef="address">
+      <th mat-header-cell *matHeaderCellDef> Address </th>
+      <td mat-cell *matCellDef="let element"> {{element.address.street}} </td>
+    </ng-container>
+
+    <!-- Phone Column -->
+    <ng-container matColumnDef="phone">
+      <th mat-header-cell *matHeaderCellDef> Phone </th>
+      <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+    </ng-container>
+
+    <!-- Website Column -->
+    <ng-container matColumnDef="website">
+      <th mat-header-cell *matHeaderCellDef> Website </th>
+      <td mat-cell *matCellDef="let element"> {{element.website}} </td>
+    </ng-container>
+
+    <!-- Company Column -->
+    <ng-container matColumnDef="company">
+      <th mat-header-cell *matHeaderCellDef> Company </th>
+      <td mat-cell *matCellDef="let element"> {{element.company.name}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+    <!-- Loader -->
+    <div class="loader" *ngIf="isLoading">
+        <mat-spinner diameter="45"></mat-spinner>
+        <p>Loading user records...</p>
+    </div>
+<!-- Paginator -->
+<mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                showFirstLastButtons
+                aria-label="Select page of users">
+</mat-paginator>
+</div>
+<!-- Error State -->
+<div class="error-box" *ngIf="errorMessage">
+  <mat-icon color="warn">error_outline</mat-icon>
+  <h3>Unable to load users</h3>
+  <p>{{errorMessage}}</p>
+  <button class="btn-warn" (click)="userLoad()">
+    <mat-icon>refresh</mat-icon>
+    Retry
+  </button>
+</div>

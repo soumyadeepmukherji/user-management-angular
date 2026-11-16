@@ -1,0 +1,131 @@
+<form class="data-form" [formGroup]="dataForm" (submit)="onSubmit()">
+    <div class="form-header">
+      <div>
+        <h2>User Information</h2>
+        <p>Enter the details below to add a new user.</p>
+      </div>
+      <span class="form-badge">USER DETAILS</span>
+    </div>
+    <!-- first name -->
+    <mat-form-field class="example-full-width">
+      <mat-label>First Name</mat-label>
+      <input type="text" matInput formControlName="firstname">
+      <mat-error *ngIf="dataForm.get('firstname').touched && dataForm.get('firstname').hasError('required')">This is a Required Field</mat-error>
+      <mat-error *ngIf="dataForm.get('firstname').dirty && dataForm.get('firstname').hasError('minlength')">Name should be atleast 3 char</mat-error>
+    </mat-form-field>
+    <!-- last name -->
+    <mat-form-field class="example-full-width">
+      <mat-label>Last Name</mat-label>
+      <input type="text" matInput formControlName="lastname">
+      <mat-error *ngIf="dataForm.get('lastname').touched && dataForm.get('lastname').hasError('required')">This is a Required Field</mat-error>
+    </mat-form-field>
+    <!-- email -->
+    <mat-form-field class="example-full-width">
+      <mat-label>Email</mat-label>
+      <input type="email" matInput formControlName="email">
+      <mat-error *ngIf="dataForm.get('email').touched && dataForm.get('email').hasError('required')">This is a Required Field</mat-error>
+      <mat-error *ngIf="dataForm.get('email').dirty && dataForm.get('email').hasError('email')">Enter a Valid Email ID</mat-error>
+    </mat-form-field>
+    <!-- phone -->
+    <mat-form-field class="example-full-width">
+      <mat-label>Phone</mat-label>
+      <input type="tel" matInput formControlName="phone">
+      <mat-error *ngIf="dataForm.get('phone').touched && dataForm.get('phone').hasError('required')">This is a Required Field</mat-error>
+      <mat-error *ngIf="dataForm.get('phone').dirty && dataForm.get('phone').hasError('pattern')">Provide Valid 10 digit phone number</mat-error>
+    </mat-form-field>
+    <!-- <mat-form-field class="example-full-width">
+      <mat-label>City</mat-label>
+      <input matInput placeholder="Ex. San Francisco">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>State</mat-label>
+      <input matInput placeholder="Ex. California">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Postal Code</mat-label>
+      <input matInput #postalCode maxlength="5" placeholder="Ex. 94105" value="94043">
+      <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+    </mat-form-field> -->
+
+    <!-- Website -->
+    <mat-form-field class="example-full-width">
+      <mat-label>Website</mat-label>
+      <input type="text" matInput formControlName="website">
+      <mat-error *ngIf="dataForm.get('website').touched && dataForm.get('website').hasError('required')">This is a Required Field</mat-error>
+      <mat-error *ngIf="dataForm.get('website').dirty && dataForm.get('website').hasError('pattern')">Provide proper website URL</mat-error>
+    </mat-form-field>
+    <!-- Company -->
+    <mat-form-field class="example-full-width">
+      <mat-label>Company</mat-label>
+      <input type="text" matInput formControlName="company">
+      <mat-error *ngIf="dataForm.get('company').touched && dataForm.get('company').hasError('required')">This is a Required Field</mat-error>
+    </mat-form-field>
+
+    <!-- address  -->
+    <mat-form-field class="example-full-width full-row">
+      <mat-label>Address</mat-label>
+      <textarea matInput formControlName="address"></textarea>
+      <mat-error *ngIf="dataForm.get('address').touched && dataForm.get('address').hasError('required')">This is a Required Field</mat-error>
+    </mat-form-field>
+
+    <!-- Skills -->
+    <mat-form-field class="example-full-width full-row" floatLabel="always">
+      <mat-label>Skills</mat-label>
+      <mat-chip-grid #chipGrid formArrayName="skills">
+        <mat-chip-row *ngFor="let skill of skills.controls; let i = index" (removed)="removeSkill(i)">
+          {{skill.value}}
+          <button matChipRemove [attr.aria-label]="'remove' + skill.value">
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-chip-row>
+      </mat-chip-grid>
+      <input
+        placeholder="New keyword..."
+        [matChipInputFor]="chipGrid"
+        (matChipInputTokenEnd)="addSkill($event)"
+      />
+      <mat-hint>Press Enter or comma to add another skill.</mat-hint>
+    </mat-form-field>
+
+    <!-- Documents -->
+    <mat-form-field class="example-full-width full-row" floatLabel="always">
+      <mat-label>Documents</mat-label>
+      <input
+        #documentGrid
+        type="file"
+        hidden
+        multiple
+        accept=".pdf,.doc,.docx"
+        (change)="addDocument($event)"
+      />
+      <button
+        mat-stroked-button
+        color="primary"
+        type="button"
+        class="upload-btn"
+        (click)="documentGrid.click()">
+
+        <mat-icon>upload_file</mat-icon>
+        Upload Documents
+      </button>
+      <mat-chip-grid #documentGrid formArrayName="documents">
+        <mat-chip-row *ngFor="let document of documents.controls; let i = index" (removed)="removeDocument(i)">
+          {{document.get('filename')?.value}}
+          <button matChipRemove [attr.aria-label]="'remove' + document.value">
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-chip-row>
+      </mat-chip-grid>
+
+      <mat-hint>PDF, DOC, DOCX files allowed. Multiple files supported.</mat-hint>
+    </mat-form-field>
+
+    <div class="form-actions full-row">
+    <button type="submit" class="submit-btn">
+      Submit Details
+    </button>
+  </div>
+
+</form>

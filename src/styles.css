@@ -1,1 +1,501 @@
 /* You can add global styles to this file, and also import other style files */
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.data-form {
+  width: 100%;
+  max-width: 850px;
+  margin: 24px auto;
+  padding: 32px;
+  box-sizing: border-box;
+
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 22px;
+
+  background: #ffffff;
+  border: 1px solid #e8eaf0;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(25, 35, 60, 0.06);
+}
+
+.login-form {
+  width: 100%;
+  max-width: 850px;
+  margin: 24px auto;
+  padding: 32px;
+  box-sizing: border-box;
+
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 18px 22px;
+
+  background: #ffffff;
+  border: 1px solid #e8eaf0;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(25, 35, 60, 0.06);
+}
+
+/* Header */
+.form-header {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 20px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid #edf0f5;
+}
+
+.form-header h2 {
+  margin: 0 0 6px;
+  color: #20283a;
+  font-size: 23px;
+  font-weight: 700;
+}
+
+.form-header p {
+  margin: 0;
+  color: #858da0;
+  font-size: 13px;
+}
+
+.form-badge {
+  padding: 7px 12px;
+  border-radius: 20px;
+  background: #eef2ff;
+  color: #4f46e5;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  white-space: nowrap;
+}
+
+/* Angular Material fields */
+.example-full-width {
+  width: 100%;
+  min-width: 0;
+}
+
+.full-row {
+  grid-column: 1 / -1;
+}
+
+/* Address */
+textarea {
+  resize: vertical;
+  min-height: 65px;
+}
+
+/* Submit section */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 8px;
+}
+
+.submit-btn {
+  min-width: 170px;
+  padding: 13px 24px;
+  border: none;
+  border-radius: 8px;
+
+  background: #4f46e5;
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+
+  transition: background 0.2s ease, transform 0.2s ease,
+              box-shadow 0.2s ease;
+}
+
+.submit-btn:hover {
+  background: #4338ca;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 14px rgba(79, 70, 229, 0.25);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+.submit-btn:focus-visible {
+  outline: 3px solid #a5b4fc;
+  outline-offset: 3px;
+}
+
+
+/* Main container */
+.user-list-container {
+  width: 100%;
+  margin: 24px auto;
+  background: #ffffff;
+  border: 1px solid #e8eaf0;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(25, 35, 60, 0.06);
+  overflow: hidden;
+}
+
+/* Header */
+.list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 25px 28px;
+  border-bottom: 1px solid #edf0f5;
+}
+
+.header-content h2 {
+  margin: 0 0 6px;
+  color: #20283a;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.header-content p {
+  margin: 0;
+  color: #858da0;
+  font-size: 13px;
+}
+
+.total-badge {
+  padding: 8px 14px;
+  border-radius: 20px;
+  background: #eef2ff;
+  color: #4f46e5;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Table wrapper */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  position: relative;
+}
+
+/* Table */
+.user-table {
+  width: 100%;
+  min-width: 1050px;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+/* Header cells */
+.user-table th.mat-mdc-header-cell {
+  background: #f8f9fc;
+  color: #596174;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  padding: 17px 20px;
+  border-bottom: 1px solid #e9ecf2;
+  white-space: nowrap;
+}
+
+/* Body cells */
+.user-table td.mat-mdc-cell {
+  color: #51596b;
+  font-size: 13px;
+  padding: 17px 20px;
+  border-bottom: 1px solid #f0f1f5;
+  white-space: nowrap;
+}
+
+/* Row hover */
+.user-table tr.mat-mdc-row {
+  transition: background 0.2s ease;
+}
+
+.user-table tr.mat-mdc-row:hover {
+  background: #f7f8ff;
+}
+
+/* Last row */
+.user-table tr.mat-mdc-row:last-child td {
+  border-bottom: none;
+}
+
+/* ID badge */
+.id-badge {
+  display: inline-block;
+  padding: 5px 9px;
+  border-radius: 6px;
+  background: #f0f2f7;
+  color: #596174;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* User name */
+.user-name {
+  color: #252d40;
+  font-weight: 600;
+}
+
+/* Username */
+.username-text {
+  color: #4f46e5;
+  font-weight: 500;
+}
+
+/* Paginator */
+mat-paginator {
+  background: #ffffff;
+  border-top: 1px solid #edf0f5;
+}
+
+/* Loader */
+.loader {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.loader p {
+  color: #596174;
+  font-size: 13px;
+}
+
+/* Error state */
+.error-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 250px;
+  padding: 30px;
+  background: #ffffff;
+  border: 1px solid #fee2e2;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.error-box mat-icon {
+  width: 42px;
+  height: 42px;
+  font-size: 42px;
+}
+
+.error-box h3 {
+  margin: 8px 0 0;
+  color: #252d40;
+}
+
+.error-box p {
+  margin: 0;
+  color: #858da0;
+  font-size: 14px;
+}
+
+.btn-warn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-top: 10px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 7px;
+  background: #dc2626;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-warn:hover {
+  background: #b91c1c;
+}
+
+
+.users-page {
+  width: 100%;
+  padding: 24px;
+  box-sizing: border-box;
+  background: #f5f6fa;
+  min-height: 100vh;
+}
+
+.users-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding: 20px 24px;
+  background: #ffffff;
+  border: 1px solid #e8eaf0;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(25, 35, 60, 0.04);
+}
+
+.page-heading h1 {
+  margin: 0 0 6px;
+  color: #20283a;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.page-heading p {
+  margin: 0;
+  color: #858da0;
+  font-size: 13px;
+}
+
+.logout-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 18px;
+  border: none;
+  border-radius: 8px;
+  background: #feecec;
+  color: #dc2626;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.logout-btn:hover {
+  background: #dc2626;
+  color: #ffffff;
+}
+
+.logout-btn mat-icon {
+  font-size: 19px;
+  width: 19px;
+  height: 19px;
+}
+
+.upload-btn{
+  display: flex;
+  align-items: center;
+}
+
+/* Skills field */
+mat-chip-grid {
+  min-height: 45px;
+}
+
+mat-chip-row {
+  font-size: 12px;
+}
+
+mat-chip-grid input {
+  min-width: 150px;
+}
+
+/* Full width field */
+.full-row {
+  grid-column: 1 / -1;
+}
+
+.document-list {
+  margin-top: 10px;
+}
+
+.document-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  margin-bottom: 8px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.document-details {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.document-details span {
+  overflow-wrap: anywhere;
+  font-weight: 500;
+}
+
+.document-details small {
+  color: #888;
+}
+
+@media (max-width: 600px) {
+  .users-page {
+    padding: 14px;
+  }
+
+  .users-page-header {
+    padding: 16px;
+  }
+
+  .page-heading h1 {
+    font-size: 19px;
+  }
+
+  .logout-btn {
+    padding: 9px 12px;
+  }
+}
+
+
+/* Responsive */
+@media (max-width: 650px) {
+  .list-header {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .user-table th.mat-mdc-header-cell,
+  .user-table td.mat-mdc-cell {
+    padding: 14px;
+  }
+}
+
+
+/* Responsive layout */
+@media (max-width: 650px) {
+  .data-form {
+    grid-template-columns: 1fr;
+    padding: 20px;
+    gap: 14px;
+  }
+
+  .form-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .full-row {
+    grid-column: auto;
+  }
+
+  .form-actions {
+    justify-content: stretch;
+  }
+
+  .submit-btn {
+    width: 100%;
+  }
+}
