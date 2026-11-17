@@ -1,20 +1,20 @@
-import { Injectable } from "@angular/core";
+import { Injectable, OnInit } from "@angular/core";
 import { LoginUser } from "../../features/auth/models/loginUser";
+import { RegisterService } from "../services/register.service";
 
 @Injectable({providedIn: 'root'})
 export class AuthService{
-    admin: LoginUser = {
-        userID: 'admin@gmail.com',
-        password: 'admin123'
-    }
+    constructor(private register: RegisterService){}
+
 
     login(userID: string, password: string): boolean{
-        if(userID === this.admin.userID && password === this.admin.password){
+        const users = this.register.getUser()
+        const success = users.find((user: any) => user.email === userID && user.password === password)
+        if(success){
             sessionStorage.setItem('isLoggedIn','true')
-            return true
         }
-
-        return false
+        
+        return success
     }
 
     isLoggedIn(): boolean {

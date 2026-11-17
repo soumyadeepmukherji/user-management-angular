@@ -46,4 +46,11 @@ export class ToastService {
             'Failed'
         )
     }
+
+    customSuccess(title: string,text: string){
+        this.toastService.success(
+            text,
+            title
+        )
+    }
 }

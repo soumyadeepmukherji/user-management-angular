@@ -1,0 +1,87 @@
+<form class="data-form" [formGroup]="registrationForm" (submit)="onSubmit()">
+      <div class="form-header">
+        <div>
+          <h2>Registration</h2>
+          <p>Enter the required field and register</p>
+        </div>
+        <span class="form-badge">REGISTRATION FORM</span>
+      </div>
+    <!-- Name -->
+    <mat-form-field class="example-full-width">
+      <mat-label>Name</mat-label>
+      <input type="text" matInput formControlName="name">
+      <mat-error *ngIf="registrationForm.get('name')?.touched && registrationForm.get('name')?.hasError('required')">This is a Required Field</mat-error>
+      <mat-error *ngIf="registrationForm.get('name')?.dirty && registrationForm.get('name')?.hasError('minlength')">Enter atleast 3 charaters</mat-error>
+    </mat-form-field>
+
+    <!-- Email -->
+    <mat-form-field class="example-full-width">
+      <mat-label>Email</mat-label>
+      <input type="text" matInput formControlName="email">
+      <mat-error *ngIf="registrationForm.get('email')?.touched && registrationForm.get('email')?.hasError('required')">This is a Required Field</mat-error>
+      <mat-error *ngIf="registrationForm.get('email')?.dirty && registrationForm.get('email')?.hasError('email')">Enter Valid Email ID</mat-error>
+    </mat-form-field>
+
+    <!-- Phone -->
+    <mat-form-field class="example-full-width">
+      <mat-label>Phone</mat-label>
+      <input type="text" matInput formControlName="phone">
+      <mat-error *ngIf="registrationForm.get('phone')?.touched && registrationForm.get('phone')?.hasError('required')">This is a Required Field</mat-error>
+      <mat-error *ngIf="registrationForm.get('phone')?.dirty && registrationForm.get('phone')?.hasError('pattern')">Enter Valid 10 digit mobile number.</mat-error>
+    </mat-form-field>
+
+    <!-- Dob -->
+    <mat-form-field class="example-full-width">
+      <mat-label>Dob</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="dob" [max]="today">
+        <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="registrationForm.get('dob')?.touched && registrationForm.get('dob')?.hasError('required')">This is a Required Field</mat-error>
+      <mat-error *ngIf="registrationForm.get('dob')?.dirty && registrationForm.get('dob')?.hasError('ageRestriction')">You must be at least 18 years old to register.</mat-error>
+      <mat-error *ngIf="registrationForm.get('dob')?.hasError('inValidDate')">
+        Please enter a valid date of birth.
+    </mat-error>
+    </mat-form-field>
+
+    <!-- Password -->
+    <mat-form-field class="example-full-width">
+      <mat-label>Password</mat-label>
+      <input [type]="hide ? 'password' : 'text'" matInput formControlName="password">
+        <button
+        matIconButton
+        matSuffix
+        (click)="clickEvent($event)"
+        class="eye"
+        >
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      <mat-error *ngIf="registrationForm.get('password')?.touched && registrationForm.get('password')?.hasError('required')">This is a Required Field</mat-error>
+      <mat-error *ngIf="registrationForm.get('password')?.dirty && registrationForm.get('password')?.hasError('pattern')">Password should be atleast one capital, one special char & 8-10 characters</mat-error>
+    </mat-form-field>
+
+    <!-- ConfirmPassword -->
+    <mat-form-field class="example-full-width">
+      <mat-label>ConfirmPassword</mat-label>
+      <input type="password" matInput formControlName="confirmPassword" [errorStateMatcher]="confirmPasswordMatcher">
+      <mat-error *ngIf="registrationForm.get('confirmPassword')?.touched && registrationForm.get('confirmPassword')?.hasError('required')">This is a Required Field</mat-error>
+      <mat-error *ngIf="registrationForm.hasError('passwordMismatch') && registrationForm.get('confirmPassword')?.dirty ">Password do not Match.</mat-error>
+    </mat-form-field>
+
+    <div class="form-actions full-row">
+    <button type="submit" class="submit-btn">
+      Submit
+    </button>
+    <button type="reset" class="reset-btn">
+      Reset
+    </button>
+    </div>
+
+    <div class="register-link full-row">
+      <span>Already have an account?</span>
+      <a routerLink="/login">
+        Log in
+        <mat-icon>arrow_forward</mat-icon>
+      </a>
+    </div>
+</form>

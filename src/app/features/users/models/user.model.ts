@@ -5,8 +5,14 @@ export interface User {
   email: string;
   phone: string;
   website: string;
-  address?: Address;
-  company?: Company;
+  address?: string;
+  skills: string[];
+  documents: UserDocument[];
+}
+
+export interface UserDocument {
+  fileName: string;
+  file: File;
 }
 
 type Address = {

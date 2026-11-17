@@ -8,7 +8,7 @@ export class UserService {
 
     constructor(private http: HttpClient){}
 
-    private BASE_API = 'https://jsonplaceholder.typicode.com/users'
+    private BASE_API = 'http://localhost:3000/employees'
 
     getData(): Observable<HttpResponse<User[]>>{
         const headers = new HttpHeaders({
@@ -32,6 +32,10 @@ export class UserService {
             headers: headers,
             observe: 'response'
         })
+    }
+
+    deleteData(id: any){
+        return this.http.delete(`${this.BASE_API}/${id}`).subscribe()
     }
 
     

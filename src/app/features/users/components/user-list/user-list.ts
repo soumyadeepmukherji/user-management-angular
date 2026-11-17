@@ -18,7 +18,7 @@ export class UserList implements OnInit {
   errorMessage: string = ''
 
   data: User[] = [];
-  displayedColumns:string[] = ['id','name','username','email','address','phone','website','company'];
+  displayedColumns:string[] = ['id','name','username','email','address','phone','website','skills','documents','action'];
   dataSource = new MatTableDataSource<User>([])
 
 
@@ -38,7 +38,8 @@ export class UserList implements OnInit {
     //Asyncronous 
     this.isLoading = true
     this.errorMessage = ''
-    this.api.getData().pipe(delay(3000),
+    this.api.getData().pipe(
+    // delay(3000),
     catchError((err)=>{
       console.log("fetching data is not getting");
       this.isLoading = false;
@@ -69,5 +70,9 @@ export class UserList implements OnInit {
         this.isLoading = false
       }
     })
+  }
+
+  onDelete(id: any){
+    this.api.deleteData(id)
   }
 }

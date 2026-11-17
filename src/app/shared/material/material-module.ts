@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { MatChipInput, MatChipsModule } from '@angular/material/chips';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -15,7 +17,9 @@ import { MatTableModule } from '@angular/material/table';
     MatPaginator,
     MatIconModule,
     MatChipsModule,
-    MatChipInput
+    MatChipInput,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   exports: [
     MatTableModule,
@@ -27,7 +31,9 @@ import { MatTableModule } from '@angular/material/table';
     MatFormFieldModule,
     MatIconModule,
     MatChipsModule,
-    MatChipInput
+    MatChipInput,
+    MatDatepickerModule,
+    MatNativeDateModule
 
   ]
 })

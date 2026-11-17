@@ -98,7 +98,8 @@ export class UserForm implements OnInit{
         address: this.dataForm.get('address').value,
         phone: this.dataForm.get('phone').value,
         website: this.dataForm.get('website').value,
-        company: this.dataForm.get('company').value
+        skills: this.dataForm.get('skills').value,
+        documents: this.dataForm.get('documents').value
       }
       console.log(payload)
       this.api.addData(payload).subscribe({

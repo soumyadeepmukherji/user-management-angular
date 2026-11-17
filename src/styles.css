@@ -96,6 +96,8 @@ textarea {
   display: flex;
   justify-content: flex-end;
   padding-top: 8px;
+  gap: 12px;
+  align-items: center;
 }
 
 .submit-btn {
@@ -128,6 +130,34 @@ textarea {
 .submit-btn:focus-visible {
   outline: 3px solid #a5b4fc;
   outline-offset: 3px;
+}
+
+.reset-btn {
+  height: 44px;
+  padding: 0 22px;
+  border: 1px solid #64748b;
+  border-radius: 8px;
+  color: #475569;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.reset-btn:hover {
+  background-color: #f1f5f9;
+  border-color: #334155;
+  color: #1e293b;
+}
+
+.submit-btn {
+  height: 44px;
+  padding: 0 24px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.form-actions mat-icon {
+  margin-right: 6px;
+  vertical-align: middle;
 }
 
 
@@ -440,6 +470,64 @@ mat-chip-grid input {
   color: #888;
 }
 
+.table-warp{
+  overflow: auto;
+}
+
+.action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+button[mat-icon-button] {
+  transition: transform 0.2s ease;
+}
+
+button[mat-icon-button]:hover {
+  transform: scale(1.1);
+}
+.eye{
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.register-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  margin-top: 24px;
+  padding: 16px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #64748b;
+}
+
+.register-link a {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.register-link a:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
+.register-link mat-icon {
+  font-size: 17px;
+  width: 17px;
+  height: 17px;
+}
+
 @media (max-width: 600px) {
   .users-page {
     padding: 14px;
@@ -453,7 +541,8 @@ mat-chip-grid input {
     font-size: 19px;
   }
 
-  .logout-btn {
+  .logout-
+   {
     padding: 9px 12px;
   }
 }
