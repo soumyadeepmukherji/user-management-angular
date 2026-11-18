@@ -15,6 +15,9 @@ export class UserForm implements OnInit{
   dataForm: any
   constructor(private fb: FormBuilder, private api: UserService, private toast: ToastService){}
 
+  isEditing = false
+  editingId = null
+  
   ngOnInit(): void {
     this.dataForm = this.fb.group({
       firstname: ['',[Validators.required,Validators.minLength(3)]],
@@ -90,7 +93,7 @@ export class UserForm implements OnInit{
 
   onSubmit(){
     if(this.dataForm.valid){
-      console.log()
+
       const payload = {
         name: this.dataForm.get('firstname').value +' '+ this.dataForm.get('lastname').value,
         username: this.dataForm.get('firstname').value,
@@ -101,26 +104,27 @@ export class UserForm implements OnInit{
         skills: this.dataForm.get('skills').value,
         documents: this.dataForm.get('documents').value
       }
-      console.log(payload)
+      // console.log(payload)
       this.api.addData(payload).subscribe({
         next: (response) => {
-          console.log('Full response',response)
-          console.log('status',response.status);
-          console.log('body',response.body);
-          console.log('headers',response.headers);
+          // console.log('Full response',response)
+          // console.log('status',response.status);
+          // console.log('body',response.body);
+          // console.log('headers',response.headers);
 
           if(response.status === 201){
             this.toast.showSuccess()
           }
         },
         error: (error: HttpErrorResponse) => {
-          console.log('error status', error.status);
-          console.log('error message', error.message);
-          console.log('error response', error.error);
+          // console.log('error status', error.status);
+          // console.log('error message', error.message);
+          // console.log('error response', error.error);
+          this.toast.showError()
         }
       })
 
-      console.log(this.dataForm.value)
+      // console.log(this.dataForm.value)
     }
     
   }

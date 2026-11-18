@@ -8,6 +8,7 @@ import { MaterialModule } from './shared/material/material-module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxMatToastModule } from 'ngx-mat-toast';
 import { AuthModule } from './features/auth/auth.module';
+import { DashboardModuleModule } from './features/dashboard/dashboard.module-module';
 
 @NgModule({
   declarations: [App],
@@ -26,6 +27,7 @@ import { AuthModule } from './features/auth/auth.module';
         vertical: 'top',
       },
     }),
+    DashboardModuleModule,
   ],
   providers: [provideBrowserGlobalErrorListeners()],
   bootstrap: [App],
